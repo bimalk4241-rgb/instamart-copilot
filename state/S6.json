@@ -1,0 +1,64 @@
+{
+  "run_id": "S6",
+  "scenario_id": "S6",
+  "messages": [
+    {
+      "role": "system",
+      "content": "AGENT. Handle simulated refund requests using tools. Follow the refund policy."
+    },
+    {
+      "role": "user",
+      "content": "Refund for order ORD-999999 please."
+    },
+    {
+      "role": "assistant",
+      "content": null,
+      "tool_calls": [
+        {
+          "id": "call_1",
+          "name": "get_order",
+          "arguments": {
+            "order_id": "ORD-999999"
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "name": "get_order",
+      "tool_call_id": "call_1",
+      "content": "{\"error\": \"order not found\"}"
+    }
+  ],
+  "tokens_used": 32,
+  "steps": [
+    {
+      "type": "llm",
+      "content": null,
+      "tool_calls": [
+        {
+          "id": "call_1",
+          "name": "get_order",
+          "arguments": {
+            "order_id": "ORD-999999"
+          }
+        }
+      ],
+      "tokens": 32
+    },
+    {
+      "type": "tool",
+      "name": "get_order",
+      "arguments": {
+        "order_id": "ORD-999999"
+      },
+      "observation": {
+        "error": "order not found"
+      }
+    }
+  ],
+  "executed_tools": [
+    "get_order"
+  ],
+  "step_number": 2
+}
